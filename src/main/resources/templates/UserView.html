@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UserInfo</title>
+</head>
+
+<body>
+
+<h1>User info </h1>
+
+<form th:object="${userInfo}" >
+
+  <input type="hidden" th:field="${userInfo.id}" readonly="readonly">
+
+  <label for="name">Name </label>
+  <input th:field="${userInfo.username}" id="name" readonly="readonly"/>
+  <br>
+
+  <label for="surname">surname </label>
+  <input th:field="${userInfo.surname}" id="surname" readonly="readonly"/>
+  <br>
+
+  <label for="Password">Password </label>
+  <input th:field="${userInfo.unEncryptedPassword}" id="Password" readonly="readonly"/>
+  <br>
+
+
+  <label for="Roles">Roles:</label>
+  <input th:field = "${userInfo.roles}" id="Roles" readonly="readonly"/>
+
+
+</form>
+
+<form action="#" th:action="@{/logout}"
+      th:method="get">
+  <input type="submit" value="logout">
+</form>
+
+
+</body>
+</html>

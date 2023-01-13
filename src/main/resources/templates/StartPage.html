@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div>
+
+  <table border="1">
+
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Password</th>
+      <th>Roles</th>
+      <th>Operations</th>
+    </tr>
+
+    <tr th:each="User : ${UserList}">
+
+      <td th:utext="${User.getUsername()}"></td>
+      <td th:utext="${User.getSurname()}"></td>
+      <td th:utext="${User.getPassword()}"></td>
+      <td th:utext="${User.getRoles()}"></td>
+      <td>
+        <form th:action="@{/admin/updUser/{id}(id=${User.getId()})}"
+              th:method="get">
+          <input type="submit" value="update">
+        </form>
+        <form th:action="@{/admin/deleteUser/{id}(id=${User.getId()})}"
+              th:method="get">
+          <input type="submit" value="delete">
+        </form>
+      </td>
+    </tr>
+
+  </table>
+
+  <br><br>
+
+  <input type="button" value="Add" onclick="window.location.href = 'admin/addNewUser1'"/>
+  <input type="button" value="Logout" onclick="window.location.href = 'logout'"/>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UserInfo</title>
+</head>
+
+<body>
+
+<h1>Adding/Updating User</h1>
+
+<form  action="#" th:action="@{/admin/addOrUpdate}" th:object="${User}" >
+
+  <input type="hidden" th:field="${User.id}" readonly="readonly">
+
+  <label for="name">Name </label>
+  <input type="text" th:field="${User.username}" id="name"/>
+  <br>
+
+  <label for="surname">surname </label>
+  <input type="text" th:field="${User.surname}" id="surname"/>
+  <br>
+
+  <label for="department">Password </label>
+  <input type="text" th:field="${User.password}" id="department"/>
+  <br>
+
+
+  <label>Roles:</label>
+  <input type="checkbox" name="roles"
+           th:each="role : ${roleList}"
+           th:text="${role.roleName}"
+           th:value="${role.id}"
+           th:field="*{roles}"/>
+  <br>
+
+  <input type="submit" value="Add/Update User">
+
+  </form>
+
+<form action="#" th:action="@{/logout}"
+      th:method="get">
+  <input type="submit" value="logout">
+</form>
+
+
+</body>
+</html>
