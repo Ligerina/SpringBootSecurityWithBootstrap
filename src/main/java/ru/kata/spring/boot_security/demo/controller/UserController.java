@@ -26,7 +26,6 @@ public class UserController {
     @GetMapping(value = "/getUserInfo/")
     public String getUserInfo(Principal principal, Model model){
         model.addAttribute("userInfo",userService.getUser(principal.getName()));
-        model.addAttribute("roleList", userService.getUser(principal.getName()).getRoles());
         return "UserView";
     }
 
