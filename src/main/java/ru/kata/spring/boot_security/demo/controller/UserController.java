@@ -23,13 +23,13 @@ public class UserController {
         this.roleRepository = roleRepository;
     }
 
-    @GetMapping(value = "/getUserInfo/")
+    @GetMapping(value = "/getUserInfo")
     public String getUserInfo(Principal principal, Model model){
         model.addAttribute("userInfo",userService.getUser(principal.getName()));
         return "UserView";
     }
 
-    @GetMapping(value = "/getEmptyUser/")
+    @GetMapping(value = "/getEmptyUser")
     public String getEmptyPage(){
         return "EmptyUser";
     }

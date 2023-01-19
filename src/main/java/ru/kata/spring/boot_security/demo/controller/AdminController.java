@@ -37,11 +37,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/addNewUser1")
-    public String addNewUser(Model model) {
-        User user = new User();
-        model.addAttribute("User", user);
-        List<Role> roleList = roleRepository.findAll();
-        model.addAttribute("roleList", roleList);
+    public String addNewUser(Model model, Principal principal) {
+        model.addAttribute("User", new User());
+        model.addAttribute("UserInfo", userService.getUser(principal.getName()));
+        model.addAttribute("roleList", roleRepository.findAll());
         return "UserInfo";
     }
 
